@@ -39,5 +39,5 @@ rm "$ARCHIVE_NAME" || true
 
 echo "[$SCRIPT_NAME] Backup complete!"
 
-curl -X POST  -d "message=Backup created: $ARCHIVE_NAME" {{notify_url}}
+curl -X POST  -d "message=Backup created: $ARCHIVE_NAME" $NOTIFICATION_URL
 
