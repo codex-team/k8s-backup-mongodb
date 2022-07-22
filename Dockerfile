@@ -1,4 +1,4 @@
-FROM mongo:latest
+FROM mongo:5.0.9
 
 RUN apt update && \
     apt install awscli p7zip-full -y
