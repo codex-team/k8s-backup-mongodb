@@ -3,7 +3,7 @@
 set -e
 
 SCRIPT_NAME=backup-mongodb
-ARCHIVE_NAME=mongodump_${BACKUP_NAME}_$(date +%Y%m%d_%H%M%S).gz
+ARCHIVE_NAME=mongodump_${BACKUP_NAME}_$(date +"%Y-%m-%d_%H-%M-%S").gz
 OPLOG_FLAG=""
 
 if [ -n "$MONGODB_OPLOG" ]; then
@@ -20,7 +20,7 @@ mongodump $OPLOG_FLAG \
 COPY_NAME=$ARCHIVE_NAME
 if [ ! -z "$PASSWORD_7ZIP" ]; then
     echo "[$SCRIPT_NAME] 7Zipping with password..."
-    COPY_NAME=mongodump_${BACKUP_NAME}_$(date +%Y%m%d_%H%M%S).7z
+    COPY_NAME=mongodump_${BACKUP_NAME}_$(date +"%Y-%m-%d_%H-%M-%S").7z
     7za a -tzip -p"$PASSWORD_7ZIP" -mem=AES256 "$COPY_NAME" "$ARCHIVE_NAME"
 fi
 
